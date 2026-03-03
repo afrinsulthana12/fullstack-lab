@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Multi-Calculator</title>
+    <style>
+        /* 1. Global Styles & Variables */
+        :root { --bg: #fff; --text: #333; --accent: #007bff; --box: #f4f4f4; }
+        .dark-mode { --bg: #222; --text: #eee; --box: #333; }
+
+        body { font-family: sans-serif; background: var(--bg); color: var(--text); text-align: center; padding: 20px; transition: 0.3s; }
+        
+        /* 2. Layout Styles */
+        .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; max-width: 400px; margin: 20px auto; }
+        .box { padding: 15px; border: 1px solid #ccc; border-radius: 8px; background: var(--box); }
+        
+        /* 3. Input & Buttons */
+        input { padding: 10px; width: 100px; margin: 5px; border-radius: 4px; border: 1px solid #ccc; }
+        button { padding: 10px; cursor: pointer; border-radius: 4px; border: none; background: var(--accent); color: white; margin: 5px; }
+        .btn-clear { background: #d9534f; }
+        .btn-theme { background: #5bc0de; }
+
+        /* Style for your name */
+        .footer-text { margin-top: 30px; font-size: 0.9rem; opacity: 0.7; font-style: italic; }
+    </style>
+</head>
+<body id="main">
+
+    <button class="btn-theme" onclick="document.body.classList.toggle('dark-mode')">🌓 Toggle Dark Mode</button>
+    <h2>Interactive Calculator</h2>
+    
+    <input type="number" id="n1" placeholder="Num 1" oninput="doMath()">
+    <input type="number" id="n2" placeholder="Num 2" oninput="doMath()">
+    <button class="btn-clear" onclick="location.reload()">Reset</button>
+
+    <div class="grid">
+        <div class="box"><h4>Sum</h4><div id="add">0</div></div>
+        <div class="box"><h4>Diff</h4><div id="sub">0</div></div>
+        <div class="box"><h4>Prod</h4><div id="mul">0</div></div>
+        <div class="box"><h4>Quot</h4><div id="div">0</div></div>
+    </div>
+
+    <div style="max-width:400px; margin:auto;">
+        <h3>History</h3>
+        <ul id="history" style="text-align:left;"></ul>
+    </div>
+
+    <!-- NEW TEXT ADDED HERE -->
+    <p class="footer-text">Designed by Afrin</p>
+
+    <script>
+        function doMath() {
+            const a = parseFloat(document.getElementById('n1').value);
+            const b = parseFloat(document.getElementById('n2').value);
+            if (isNaN(a) || isNaN(b)) return;
+
+            const results = {
+                add: a + b,
+                sub: a - b,
+                mul: a * b,
+                div: b !== 0 ? (a / b).toFixed(2) : "Error"
+            };
+
+            for (let key in results) {
+                document.getElementById(key).innerText = results[key];
+            }
+
+            const list = document.getElementById('history');
+            const entry = document.createElement('li');
+            entry.textContent = `Input: ${a}, ${b} at ${new Date().toLocaleTimeString()}`;
+            list.prepend(entry);
+            
+            if (list.children.length > 5) list.lastChild.remove();
+        }
+    </script>
+</body>
+</html>
