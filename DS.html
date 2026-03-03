@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Multidimensional Grocery Cart</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; line-height: 1.6; }
+        .controls { margin-bottom: 20px; border-bottom: 1px solid #ccc; padding-bottom: 10px; }
+        input { padding: 8px; width: 120px; }
+        button { padding: 8px 12px; cursor: pointer; margin-right: 5px; margin-top: 5px; }
+        #display { background: #f9f9f9; padding: 15px; border-radius: 5px; border: 1px solid #ddd; }
+    </style>
+</head>
+<body>
+
+    <h2>Multidimensional Grocery List</h2>
+    
+    <div class="controls">
+        <!-- Two inputs to create the sub-array [item, qty] -->
+        <input type="text" id="itemInput" placeholder="Item name">
+        <input type="number" id="qtyInput" placeholder="Qty" min="1">
+        
+        <br>
+        <button onclick="addItem()">Push (Add Sub-Array)</button>
+        <button onclick="removeItem()">Pop (Remove Last)</button>
+        <button onclick="peekItem()">Peek (View Last)</button>
+        <button onclick="showSize()">Size (Count)</button>
+    </div>
+
+    <div id="display">
+        <strong>Your Cart (Matrix View):</strong>
+        <p id="listItems">Empty</p>
+        <p id="statusMsg" style="color: green; font-weight: bold;"></p>
+    </div>
+
+    <script>
+        // Multidimensional Array (Array of Arrays)
+        let groceryCart = []; 
+
+        const listDisplay = document.getElementById('listItems');
+        const statusMsg = document.getElementById('statusMsg');
+
+        function updateUI() {
+            // Mapping the multidimensional array into a readable string
+            listDisplay.innerText = groceryCart.length > 0 
+                ? groceryCart.map(entry => `[${entry[0]} x${entry[1]}]`).join(', ') 
+                : "Empty";
+        }
+
+        // PUSH: Adds a new sub-array [name, qty] to the main array
+        function addItem() {
+            const item = document.getElementById('itemInput').value;
+            const qty = document.getElementById('qtyInput').value || 1;
+
+            if (item) {
+                // Creating the multidimensional structure: [ ["Milk", 2], ["Bread", 1] ]
+                groceryCart.push([item, qty]);
+                
+                statusMsg.innerText = `Pushed Sub-Array: ["${item}", ${qty}]`;
+                document.getElementById('itemInput').value = '';
+                document.getElementById('qtyInput').value = '';
+                updateUI();
+            }
+        }
+
+        // POP: Removes the entire last sub-array
+        function removeItem() {
+            if (groceryCart.length > 0) {
+                const removedEntry = groceryCart.pop();
+                statusMsg.innerText = `Popped: ${removedEntry[0]} (Qty: ${removedEntry[1]})`;
+                updateUI();
+            } else {
+                statusMsg.innerText = "Nothing to pop!";
+            }
+        }
+
+        // PEEK: Accesses indices of the last sub-array
+        function peekItem() {
+            if (groceryCart.length > 0) {
+                const lastSubArray = groceryCart[groceryCart.length - 1];
+                // Accessing multidimensional data using indices: [0] and [1]
+                statusMsg.innerText = `Peeking Last: Item is ${lastSubArray[0]}, Qty is ${lastSubArray[1]}`;
+            } else {
+                statusMsg.innerText = "Cart is empty.";
+            }
+        }
+
+        function showSize() {
+            statusMsg.innerText = `The main array contains ${groceryCart.length} sub-arrays.`;
+        }
+    </script>
+</body>
+</html>
