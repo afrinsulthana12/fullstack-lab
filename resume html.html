@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Afrin Sulthana | Professional Resume</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f3f4f6;
+            margin: 0;
+            padding: 30px;
+            color: #1f2937;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            padding: 35px;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            border-bottom: 2px solid #e5e7eb;
+            padding-bottom: 20px;
+            margin-bottom: 25px;
+        }
+
+        .photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 8px;
+            border: 2px solid #9ca3af;
+            object-fit: cover;
+            margin-right: 25px;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 30px;
+        }
+
+        .header p {
+            margin: 4px 0;
+            font-size: 14px;
+            color: #4b5563;
+        }
+
+        .controls {
+            margin: 15px 0 25px 0;
+        }
+
+        input[type="file"] {
+            padding: 8px 12px;
+            font-size: 13px;
+            border-radius: 5px;
+            border: 1px solid #9ca3af;
+            margin-right: 10px;
+        }
+
+        button {
+            padding: 8px 16px;
+            font-size: 13px;
+            border-radius: 5px;
+            border: none;
+            background: #374151;
+            color: white;
+            cursor: pointer;
+        }
+
+        .section {
+            margin-bottom: 22px;
+        }
+
+        .section h2 {
+            font-size: 17px;
+            border-left: 4px solid #6b7280;
+            padding-left: 10px;
+            margin-bottom: 10px;
+        }
+
+        .section p, .section li {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #374151;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        .skills span {
+            display: inline-block;
+            border: 1px solid #6b7280;
+            padding: 5px 10px;
+            border-radius: 16px;
+            margin: 4px;
+            font-size: 13px;
+        }
+
+        footer {
+            text-align: center;
+            font-size: 12px;
+            color: #6b7280;
+            margin-top: 25px;
+        }
+
+        @media print {
+            button, input[type="file"], footer {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <img src="" id="profilePic" class="photo">
+        <div>
+            <h1>Afrin Sulthana</h1>
+            <p>📧 afrinsulthana127@gmail.com</p>
+            <p>📞 9566814533</p>
+            <p>MCA Student | Aspiring Software & Full Stack Developer</p>
+        </div>
+    </div>
+
+    <div class="controls">
+        <input type="file" accept="image/*" onchange="loadImage(event)">
+        <button onclick="downloadPDF(v)">Save as PDF</button>
+    </div>
+
+    <div class="section">
+        <h2>Professional Summary</h2>
+        <p>
+            Motivated MCA student with a strong foundation in programming and application
+            development. Interested in building efficient, user-friendly software solutions
+            and continuously upgrading technical skills.
+        </p>
+    </div>
+
+    <div class="section">
+        <h2>Education</h2>
+        <ul>
+            <li><strong>MCA</strong> – Mepco Schlenk Engineering College (Pursuing)</li>
+            <li><strong>B.Sc Chemistry</strong> – Lady Doak College, Madurai (CGPA: 7.0)</li>
+            <li><strong>12th</strong> – 82%</li>
+            <li><strong>10th</strong> – 77%</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Technical Skills</h2>
+        <div class="skills">
+            <span>Python</span>
+            <span>Java</span>
+            <span>C</span>
+            <span>HTML</span>
+            <span>Flutter</span>
+        </div>
+    </div>
+
+    <!-- 🧠 PROJECTS SECTION -->
+    <div class="section">
+        <h2>Projects</h2>
+        <ul>
+            <li>
+                <strong>Student Management System</strong><br>
+                Developed a basic student management application using C/Python
+                to manage student records such as marks and personal details.
+            </li>
+            <li>
+                <strong>Personal Portfolio Website</strong><br>
+                Designed a responsive portfolio website using HTML and CSS
+                to showcase academic and technical details.
+            </li>
+            <li>
+                <strong>Mobile Application (Academic)</strong><br>
+                Created a simple Flutter-based mobile application as part of coursework
+                focusing on UI design and navigation.
+            </li>
+        </ul>
+    </div>
+
+    <!-- 💼 INTERNSHIP / CERTIFICATIONS SECTION -->
+    <div class="section">
+        <h2>Internship / Certifications</h2>
+        <ul>
+            <li>
+                Completed online certification in <strong>Python Programming</strong>
+                covering fundamentals, control structures, and functions.
+            </li>
+            <li>
+                Attended workshops / training programs related to
+                <strong>Java and Web Development</strong>.
+            </li>
+            <li>
+                Actively learning Full Stack Development through academic coursework
+                and self-learning platforms.
+            </li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Hobbies</h2>
+        <ul>
+            <li>Drawing</li>
+            <li>Cooking</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Declaration</h2>
+        <p>I hereby declare that the above information is true to the best of my knowledge.</p>
+    </div>
+
+    <footer>© Afrin Sulthana | Professional Resume</footer>
+
+</div>
+
+<script>
+    function downloadPDF() {
+        window.print();
+    }
+
+    function loadImage(event) {
+        document.getElementById("profilePic").src =
+            URL.createObjectURL(event.target.files[0]);
+    }
+</script>
+
+</body>
+</html>
