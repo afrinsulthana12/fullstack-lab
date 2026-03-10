@@ -1,0 +1,15 @@
+/**
+ * @return {Generator<number>}
+ */
+var fibGenerator = function*() {
+    let curr = 0;
+    let next = 1;
+
+    while (true) {
+        // Yield the current number in the sequence
+        yield curr;
+        
+        // Calculate the next pair using destructuring assignment
+        [curr, next] = [next, curr + next];
+    }
+};
