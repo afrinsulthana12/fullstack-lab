@@ -1,0 +1,27 @@
+/**
+ * @param {*} obj
+ * @param {*} classFunction
+ * @return {boolean}
+ */
+var checkIfInstanceOf = function(obj, classFunction) {
+    // Return false if classFunction is not a valid constructor/function
+    if (typeof classFunction !== 'function') {
+        return false;
+    }
+
+    // Handle null/undefined values for the object
+    if (obj === null || obj === undefined) {
+        return false;
+    }
+
+    // Traverse the prototype chain
+    let currProto = Object.getPrototypeOf(obj);
+    while (currProto !== null) {
+        if (currProto === classFunction.prototype) {
+            return true;
+        }
+        currProto = Object.getPrototypeOf(currProto);
+    }
+
+    return false;
+};
