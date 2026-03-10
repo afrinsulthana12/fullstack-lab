@@ -1,0 +1,24 @@
+/**
+ * @param {Array} arr
+ * @param {number} n
+ * @return {Array}
+ */
+var flat = function (arr, n) {
+    // Base case: If depth is 0, no more flattening needed
+    if (n === 0) return arr;
+
+    const result = [];
+
+    for (const item of arr) {
+        // If the item is an array and we still have depth (n > 0)
+        if (Array.isArray(item) && n > 0) {
+            // Recursively flatten and push elements to result
+            result.push(...flat(item, n - 1));
+        } else {
+            // If it's not an array, just push the item
+            result.push(item);
+        }
+    }
+
+    return result;
+};
