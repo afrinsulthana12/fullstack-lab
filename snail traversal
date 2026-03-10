@@ -1,0 +1,28 @@
+/**
+ * @param {number} rowsCount
+ * @param {number} colsCount
+ * @return {Array<Array<number>>}
+ */
+Array.prototype.snail = function(rowsCount, colsCount) {
+    // 1. Mandatory dimension check (Requirement for LeetCode 2624)
+    if (rowsCount * colsCount !== this.length) {
+        return [];
+    }
+
+    // 2. Pre-allocate the rows to avoid "cannot set property of undefined" errors
+    const result = Array.from({ length: rowsCount }, () => []);
+
+    // 3. Use 'this' to iterate through the input array
+    for (let j = 0; j < colsCount; j++) {
+        const isReverse = j % 2 === 1;
+        
+        for (let i = 0; i < rowsCount; i++) {
+            const rowIndex = isReverse ? rowsCount - 1 - i : i;
+            // Map 1D index to current column/row position
+            const elementIndex = j * rowsCount + i;
+            result[rowIndex][j] = this[elementIndex];
+        }
+    }
+
+    return result;
+}
